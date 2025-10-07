@@ -1,11 +1,12 @@
-var allButtons = []
+var allButtons = [];
 
 var moveCounter = 0;
 var cheesesFound;
 var noOfCheeses;
 var gameHour;
 
-let hostAddress = "https://cheesefinder.azurewebsites.net/";
+// ⬇️ USE YOUR LIVE AZURE URL (keep the trailing slash)
+let hostAddress = "https://louis-lab11-2025-hrarbgevgne5eugx.westeurope-01.azurewebsites.net/";
 
 let startUrl = hostAddress + "getstart.json";
 let getStyleUrl = hostAddress + "getstyle.json";
@@ -38,9 +39,8 @@ function setButtonStyle(button) {
   let checkUrl = getStyleUrl + "?x=" + x + "&y=" + y;
   getFromServer(checkUrl, result => {
     let checkDetails = JSON.parse(result);
-    if(checkDetails.hour != gameHour){
-      // we have reached the end of the hour
-      // end the game
+    if (checkDetails.hour != gameHour) {
+      // Hour rolled over → end this game
       alert("The game in this hour has ended.");
       location.reload();
     }
@@ -68,7 +68,6 @@ function buttonClickedHandler(event) {
 }
 
 function setupGame(gameDetailsJSON) {
-
   let gameDetails = JSON.parse(gameDetailsJSON);
 
   noOfCheeses = gameDetails.noOfCheeses;
