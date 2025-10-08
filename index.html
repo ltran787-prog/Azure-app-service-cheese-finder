@@ -1,30 +1,36 @@
-<!DOCTYPE html>
-<html>
-
+<!doctype html>
+<html lang="en">
 <head>
+  <meta charset="utf-8" />
   <title>Cheese Finder</title>
   <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
   <link rel="stylesheet" href="styles.css">
+  <style>
+    /* optional minimal styling if styles.css is missing */
+    body { font-family: system-ui, sans-serif; margin: 2rem; }
+    #buttonPar { margin-top: 1rem; }
+    button { width: 30px; height: 30px; margin: 2px; }
+    .cheese { background: gold; }
+    .near { background: plum; }
+    .empty { background: #eee; }
+  </style>
 </head>
-<h1>&#129472; Cheese Finder</h1>
-
 <body>
+  <h1>🧀 Cheese Finder</h1>
 
-  <p>Take it in turns to play. Click the buttons to sniff for cheeses. 
-    Clicked buttons show you how far away the cheese is.
-    Each button colour represents a particular distance.</p>
-  <p>Play to find the cheese, or to avoid it.</p>
-  <p>You get a different game every hour.</p>
-  <p id="counterPar"></p>
-  <p id="buttonPar"> </p>
-  <p>
-    <a href="https://begintocodecloud.com/"> Begin to Code Cloud</a>
-</p>
+  <p>Take it in turns to play. Click the buttons to sniff for cheeses.
+    Clicked buttons show you how far away the cheese is. Each color = a distance.</p>
+  <p>New game every hour.</p>
+
+  <p id="counterPar">Cheeses left: 0  Tries: 0</p>
+  <div id="buttonPar"></div>
+
+  <p><a href="https://begintocodecloud.com/">Begin to Code Cloud</a></p>
 
   <script type="module">
-    import { doPlayGame } from "./client.mjs";
+    import { doPlayGame } from './client.mjs';
+    // start immediately (no Play button needed)
     doPlayGame();
   </script>
 </body>
-
 </html>
